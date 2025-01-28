@@ -1,0 +1,18 @@
+<section class="product-list">
+  <div class="search-bar">
+    <input [(ngModel)]="searchQuery" placeholder="Search products..." class="search-input" />
+  </div>
+
+  <div class="product-grid">
+    <div *ngFor="let product of products | filter: searchQuery" class="product-card">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
+      <h2 class="product-title">{{ product.name }}</h2>
+      <p class="product-description">{{ product.description }}</p>
+      <p class="product-price">${{ product.price }}</p>
+
+      <!-- Link to Product Detail Page -->
+      <a [routerLink]="['/product', product.id]" class="view-details">View Details</a>
+      <button class="add-to-cart" (click)="addToCart(product)">Add to Cart</button>
+    </div>
+  </div>
+</section>
